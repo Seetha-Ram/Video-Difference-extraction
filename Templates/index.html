@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Play Videos</title>
+</head>
+<body>
+    <h1>Upload Two Videos</h1>
+    <form method="POST" action="/process_video" enctype="multipart/form-data">
+        <input type="file" name="file1" accept=".mp4"><br>
+        <input type="file" name="file2" accept=".mp4"><br>
+        <input type="submit" value="Process Videos">
+    </form>
+
+    <h2>Processed Video</h2>
+    <button id="playButton" onclick="playVideo()">Play Video</button>
+    <video id="videoPlayer" width="640" height="480" controls>
+        <source src="{{ url_for('static', filename='difference.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function playVideo() {
+            var video = document.getElementById('videoPlayer');
+            var button = document.getElementById('playButton');
+            video.play();
+            button.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
